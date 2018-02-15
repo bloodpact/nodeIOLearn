@@ -12913,8 +12913,11 @@ const app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 
-const publicPath =path.join(__dirname ,'../public');
+const publicPath =path.join(__dirname ,'..' ,'public');
 app.use(express.static(publicPath));
+io.on('connection',(socket)=>{
+    console.log('user conn')
+});
 //for heroku deployment
 const port = process.env.PORT || 3333;
 
